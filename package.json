@@ -1,0 +1,30 @@
+{
+  "name": "create-typescript-app",
+  "version": "1.0.0",
+  "description": "Create typescript app",
+  "main": "index.js",
+  "bin": {
+    "create-typescript-app": "index.js"
+  },
+  "repository": "https://github.com/Template-generator/create-typescript-app.git",
+  "author": "Kamontat Chantrachirathumrong <kamontat.c@hotmail.com>",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "execa": "1.0.0",
+    "fs-extra": "7.0.1",
+    "listr": "0.14.3",
+    "mustache": "3.0.1",
+    "pkg": "4.3.4",
+    "prompts": "1.2.1",
+    "yargs": "12.0.5"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "pkg . -t node8-macos,node8-linux,node8-win --output bin/create-typescript-app",
+    "deploy": "npm publish --access public"
+  }
+}
