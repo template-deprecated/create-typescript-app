@@ -1,12 +1,12 @@
 {
   "name": "create-typescript-template-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create typescript app",
   "main": "index.js",
   "bin": {
     "create-typescript-template-app": "index.js"
   },
-  "repository": "https://github.com/Template-generator/create-typescript-template-app.git",
+  "repository": "https://github.com/Template-generator/create-typescript-app.git",
   "author": "Kamontat Chantrachirathumrong <kamontat.c@hotmail.com>",
   "license": "MIT",
   "private": false,
@@ -29,6 +29,6 @@
     "deploy": "npm publish --access public"
   },
   "pkg": {
-    "assets": ["./fixtures"]
+    "assets": ["./fixtures/**/*", "./package.json"]
   }
 }
