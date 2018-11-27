@@ -1,4 +1,5 @@
-# create-node-cli-app
+# create-typescript-app
+
 Create node cli application.
 
 ## Table of content
@@ -15,27 +16,25 @@ You can install by using [bin script](bin).
 
 1. Download file that match you os and cpu in [bin](bin)
 2. make it execuable by `chmod +x <path/to/file>`
-3. learn more `create-node-cli-app --help`
+3. learn more `create-typescript-app --help`
 
 #### Option B
 
 Install by `yarn` or `npm`
 
 - Yarn
-  1. run `yarn create node-cli-app <app-name> [option...]`
-  2. learn more by `yarn create node-cli-app --help`
+  1. run `yarn create typescript-app <app-name> [option...]`
+  2. learn more by `yarn create typescript-app --help`
 - Npm
-  1. run `npm init node-cli-app <app-name> [option...]` or `npx create-node-cli-app <app-name> [option...]`
-  2. learn more by `npm init node-cli-app --help` or `npx create-node-cli-app --help`
+  1. run `npm init typescript-app <app-name> [option...]` or `npx create-typescript-app <app-name> [option...]`
+  2. learn more by `npm init typescript-app --help` or `npx create-typescript-app --help`
 
 ## Usage
 
 ```bash
-create-node-cli-app <app-name...>
+create-typescript-app <app-name...>
 
-Create node cli app with typescript, yargs, tracer (as logger),
-prompts, listr (as progressing), chalk (as colorize),
-typedoc (as doc generator), jest (as testing tools).
+Create typescript application.
 
 Positionals:
   app-name  Application name, can be capital, and space name            [string]
@@ -51,7 +50,7 @@ Options:
 ## Development
 
 This generate command contain only 1 javasccript file which is [index.js](index.js).
-This use only `yargs` to create cli, `prompts` to make prompts command, 
+This use only `yargs` to create cli, `prompts` to make prompts command,
 `listr` to output result as progress text, `mustache` to create file templates and `pkg` to build binary file (which shouldn't be use).
 
 You will have only 3 command possible with `yarn` or `npm`

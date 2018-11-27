@@ -1,6 +1,6 @@
 {
   "name": "create-typescript-app",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "Create typescript app",
   "main": "index.js",
   "bin": {
@@ -25,6 +25,10 @@
   "scripts": {
     "start": "node index.js",
     "build": "pkg . -t node8-macos,node8-linux,node8-win --output bin/create-typescript-app",
+    "build:debug": "yarn build --debug",
     "deploy": "npm publish --access public"
+  },
+  "pkg": {
+    "assets": ["./fixtures"]
   }
 }

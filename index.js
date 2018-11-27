@@ -11,7 +11,7 @@ const prompts = require("prompts");
 
 const app = {
   name: "create-typescript-app",
-  version: "1.0.0-beta.1",
+  version: "1.0.0",
   repo_url: "https://github.com/Template-generator/create-typescript-app",
   developer: "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
   when: +new Date()
@@ -116,7 +116,7 @@ const filepath = argv.current ? rootpath : path.join(rootpath, filename);
   progress.add({
     title: `Creating folder at ${filepath}`,
     task: async () => {
-      await fs.copy(fixture, filepath);
+      await fs.copy(fixture, filepath, { recursive: true, overwrite: true });
     }
   });
 
