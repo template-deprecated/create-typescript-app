@@ -1,4 +1,4 @@
-# create-typescript-app
+# create-typescript-template-app
 
 Create node cli application.
 
@@ -16,7 +16,7 @@ You can install by using [bin script](bin).
 
 1. Download file that match you os and cpu in [bin](bin)
 2. make it execuable by `chmod +x <path/to/file>`
-3. learn more `create-typescript-app --help`
+3. learn more `create-typescript-template-app --help`
 
 #### Option B
 
@@ -26,13 +26,13 @@ Install by `yarn` or `npm`
   1. run `yarn create typescript-app <app-name> [option...]`
   2. learn more by `yarn create typescript-app --help`
 - Npm
-  1. run `npm init typescript-app <app-name> [option...]` or `npx create-typescript-app <app-name> [option...]`
-  2. learn more by `npm init typescript-app --help` or `npx create-typescript-app --help`
+  1. run `npm init typescript-app <app-name> [option...]` or `npx create-typescript-template-app <app-name> [option...]`
+  2. learn more by `npm init typescript-app --help` or `npx create-typescript-template-app --help`
 
 ## Usage
 
 ```bash
-create-typescript-app <app-name...>
+create-typescript-template-app <app-name...>
 
 Create typescript application.
 

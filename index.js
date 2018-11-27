@@ -10,9 +10,9 @@ const Listr = require("listr");
 const prompts = require("prompts");
 
 const app = {
-  name: "create-typescript-app",
+  name: "create-typescript-template-app",
   version: "1.0.0",
-  repo_url: "https://github.com/Template-generator/create-typescript-app",
+  repo_url: "https://github.com/Template-generator/create-typescript-template-app",
   developer: "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
   when: +new Date()
 };
