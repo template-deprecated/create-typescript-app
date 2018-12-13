@@ -1,5 +1,10 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "extends": ["config:base"],
+  "assignees": ["kamontat"],
+  "reviewers": ["kamontat"],
+  "automerge": true,
+  "automergeType": "pr-comment",
+  "major": {
+    "automerge": false
+  },
 }
