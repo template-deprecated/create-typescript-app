@@ -15,7 +15,7 @@ const app = {
   name: pjson.name,
   version: pjson.version,
   repo_url: pjson.repository,
-  developer: author,
+  developer: pjson.author,
   when: +new Date()
 };
 
