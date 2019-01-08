@@ -49,12 +49,10 @@ Options:
 
 ## Development
 
-This generate command contain only 1 javasccript file which is [index.js](index.js).
-This use only `yargs` to create cli, `prompts` to make prompts command,
-`listr` to output result as progress text, `mustache` to create file templates and `pkg` to build binary file (which shouldn't be use).
+This generate command contain only 1 javasccript file which is [index.js](index.js). This use only `yargs` to create cli, `prompts` to make prompts command, `listr` to output result as progress text, `mustache` to create file templates and `pkg` to build binary file (which shouldn't be use).
 
 You will have only 3 command possible with `yarn` or `npm`
 
 1. **start**: which run `node index.js`
 2. **build**: which build execuable file in bin folder (separate by os).
-3. **deploy**: which basically call `npm publish`
+3. **deploy**: which basically call `npm run publish`, you might got error when use by `yarn`
