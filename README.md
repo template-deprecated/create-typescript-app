@@ -23,11 +23,11 @@ You can install by using [bin script](bin).
 Install by `yarn` or `npm`
 
 - Yarn
-  1. run `yarn create typescript-app <app-name> [option...]`
-  2. learn more by `yarn create typescript-app --help`
+  1. run `yarn create typescript-template-app <app-name> [option...]`
+  2. learn more by `yarn create typescript-template-app --help`
 - Npm
-  1. run `npm init typescript-app <app-name> [option...]` or `npx create-typescript-template-app <app-name> [option...]`
-  2. learn more by `npm init typescript-app --help` or `npx create-typescript-template-app --help`
+  1. run `npm init typescript-template-app <app-name> [option...]` or `npx create-typescript-template-app <app-name> [option...]`
+  2. learn more by `npm init typescript-template-app --help` or `npx create-typescript-template-app --help`
 
 ## Usage
 
