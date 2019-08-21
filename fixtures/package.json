@@ -28,7 +28,7 @@
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@types/jest": "23.3.9",
+    "@types/jest": "23.3.14",
     "@types/node": "10.12.10",
     "jest": "23.6.0",
     "jest-extended": "0.11.0",
