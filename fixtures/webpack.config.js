@@ -27,7 +27,7 @@ if (!["development", "testing", "production"].includes(NODE_ENV)) NODE_ENV = "de
 const isDev = NODE_ENV === "development"
 
 const apps = [{
-  name: "deployment",
+  name: "{{filename}}",
   file: "./index.ts"
 }]
 
