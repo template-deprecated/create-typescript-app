@@ -1,103 +1,115 @@
-const path = require("path");
+const path = require('path');
 
 const webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");
+const ClosurePlugin = require('closure-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
-const TerserPlugin = require("terser-webpack-plugin");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const pjson = require("./package.json")
+
+const BANNER_TITLE = process.env.BANNER_TITLE ||
+  `----------------------------------------
+Name:     ${pjson.name}
+Version:  ${pjson.version}
+Author:   ${pjson.author}
+----------------------------------------`
+
+const DIST_FOLDER = process.env.DIST_FOLDER || "dist"
+const REPORT_FOLDER = process.env.REPORT_FOLDER || "reports"
+
+const DEV_STATISTIC_HTML = process.env.DEV_STATISTIC_HTML || "statistic-dev.html"
+const STATISTIC_HTML = process.env.STATISTIC_HTML || "statistics.html"
+
+const NODE_ENV = process.env.NODE_ENV || "development"
+if (!["development", "testing", "production"].includes(NODE_ENV)) NODE_ENV = "development"
+
+const isDev = NODE_ENV === "development"
+
+const apps = [{
+  name: "deployment",
+  file: "./index.ts"
+}]
+
+const entry = {}
+apps.forEach(app => entry[app.name] = app.file)
+
+const minimizer = [new ClosurePlugin({
+  mode: 'STANDARD',
+  childCompilations: true
+}, {
+  formatting: 'PRETTY_PRINT',
+  debug: isDev,
+  renaming: !isDev
+})]
+if (!isDev) minimizer.push(new UglifyJsPlugin({
+  extractComments: {
+    condition: true,
+    banner() {
+      return BANNER_TITLE;
+    },
+  }
+}))
 
 module.exports = {
-  mode: "development", // production
-  entry: {
-    "{{filename}}": "./index.ts"
-  },
+  mode: NODE_ENV,
+  entry,
   devtool: "inline-source-map",
   module: {
-    rules: [
-      {
-        test: /\.ts?$/,
+    rules: [{
+        test: /\.ts$/,
         enforce: "pre",
-        use: [
-          {
-            loader: "tslint-loader",
-            options: {
-              typeCheck: false,
-              fix: true
-            }
+        use: [{
+          loader: "tslint-loader",
+          options: {
+            typeCheck: false,
+            fix: true
           }
-        ],
-        exclude: /node_modules/
+        }]
       },
       {
         test: /\.ts?$/,
-        use: [
-          {
-            loader: "ts-loader",
-            options: {
-              /* Loader options go here */
-            }
+        use: [{
+          loader: "ts-loader",
+          options: {
+            allowTsInNodeModules: true
           }
-        ],
-        exclude: /node_modules/
+        }]
       }
     ]
   },
   optimization: {
-    minimizer: [
-      new TerserPlugin({
-        parallel: true,
-        terserOptions: {
-          compress: {
-            ecma: 6,
-            keep_fargs: false,
-            module: true,
-            toplevel: true,
-            warnings: true,
-            unsafe_methods: true,
-            unsafe_undefined: true
-          },
-          output: {
-            beautify: false,
-            comments: false
-            // output options
-          },
-          warnings: false,
-          mangle: {
-            module: true,
-            toplevel: true,
-            properties: {
-              regex: /_$/
-            }
-          },
-          toplevel: true,
-          module: true,
-          ie8: false,
-          keep_classnames: false,
-          keep_fnames: false,
-          safari10: false
-        }
-      })
-    ]
-  },
-  resolve: {
-    extensions: ["json", ".ts", ".js"]
+    nodeEnv: NODE_ENV,
+    mangleWasmImports: true,
+    moduleIds: isDev ? 'named' : 'hashed',
+    minimize: !isDev,
+    minimizer,
+    splitChunks: {
+      minSize: 0
+    }
   },
   plugins: [
     new webpack.DefinePlugin({
-      COMPILED_DATE: JSON.stringify(+new Date())
+      "__NODE_ENV__": JSON.stringify(NODE_ENV),
+      "__COMPILE_DATE__": JSON.stringify(+new Date()),
+      "__VERSION__": JSON.stringify(pjson.version)
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new Visualizer({
+      filename: `../${REPORT_FOLDER}/${isDev ? DEV_STATISTIC_HTML : STATISTIC_HTML}`
     })
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: "static",
-    //   reportFilename: "webpack/report.html",
-    //   generateStatsFile: true,
-    //   statsFilename: "webpack/stat.json",
-    //   openAnalyzer: false
-    // })
   ],
+  resolve: {
+    extensions: ["json", ".ts", ".js"]
+  },
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "[name].js"
+    filename: isDev ? '[name].js' : '[name].min.js',
+    path: path.resolve(__dirname, DIST_FOLDER)
   },
   target: "node",
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
+  // externals: [nodeExternals({
+  //   whitelist: ["include"]
+  // })]
 };
