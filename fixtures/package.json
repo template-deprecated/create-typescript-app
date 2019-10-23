@@ -38,7 +38,7 @@
     "closure-webpack-plugin": "2.0.1",
     "cross-env": "5.2.1",
     "google-closure-compiler": "20190819.0.0",
-    "ts-loader": "6.0.4",
+    "ts-loader": "6.2.1",
     "ts-node": "8.3.0",
     "tslint": "5.19.0",
     "tslint-loader": "3.5.4",
