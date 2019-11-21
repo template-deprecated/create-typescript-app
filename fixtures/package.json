@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "debug": "4.1.1",
-    "phin": "3.4.0"
+    "phin": "3.4.1"
   },
   "devDependencies": {
     "@types/debug": "4.1.5",
