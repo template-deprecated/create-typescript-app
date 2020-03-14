@@ -37,7 +37,7 @@
     "@types/phin": "3.3.0",
     "closure-webpack-plugin": "2.0.1",
     "cross-env": "5.2.1",
-    "google-closure-compiler": "20190819.0.0",
+    "google-closure-compiler": "20200224.0.0",
     "ts-loader": "6.0.4",
     "ts-node": "8.3.0",
     "tslint": "5.19.0",
